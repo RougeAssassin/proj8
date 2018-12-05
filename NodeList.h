@@ -22,7 +22,7 @@ class Node{
 	  m_data( other.m_data )
 	{
 	}
-	
+
     DataType & data(){  //gets non-const reference, can be used to modify value of underlying data
       //return const_cast<DataType &>(static_cast<const Node &>(*this).getData());  //an alternative implementation, just for studying reference
 	  return m_data;
@@ -30,9 +30,9 @@ class Node{
     const DataType & data() const{  //gets const reference, can be used to access value of underlying data
       return m_data;
     }
-
+    Node * m_next;
   private:
-    Node * m_next; 						
+
     DataType m_data;
 };
 
@@ -49,24 +49,23 @@ class NodeList{
 
     Node * front();							    		  //(6)
     Node * back();										  //(7)
-	
+
     Node * find(const DataType & target,				  //(8)
-                Node * & previous,
-                const Node * start = NULL);	
-	
+                Node * & previous);
+
     Node * insertAfter(const DataType & target,    		  //(9)
-                       const DataType & value);	    
+                       const DataType & value);
     Node * insertBefore(const DataType & target,    	  //(10)
                         const DataType & value);
     Node * erase(const DataType & target); 			      //(11)
 
-	
-    DataType & operator[] (size_t position);			  //(12a)
-    const DataType & operator[] (size_t position) const;  //(12b)
-    
+
+    DataType & operator[](size_t position);			  //(12a)
+    const DataType & operator[](size_t position) const;  //(12b)
+
     size_t size() const;								  //(13)
     bool empty() const;									  //(14)
-    void clear();										  //(15)	
+    void clear();										  //(15)
 
   private:
     Node * m_head;
